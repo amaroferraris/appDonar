@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import loader
 
+
+def inicio(request):
+    return HttpResponse(f'Hola soy Inicio proyectoFinal')
+
 def saludo(request):
 
     dia = datetime.now()
