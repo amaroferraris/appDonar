@@ -3,5 +3,13 @@
 {% load static %}
 
 {% block contenido %}
-    <p>Acá van los utensilios</p>
+<div class="contenidoRopa">
+    <form class="formDataRopa">
+        <p>TIPO <input type="text" placeholder="Cama 1 plaza..."></p>
+        <p>COLOR <input type="text" placeholder="Marrón claro..."></p>        
+        <p>FECHA ELABORACIÓN <input type="text" placeholder="10/06/2015"></p>        
+        <p>EMAIL <input type="text" placeholder="tumail@gmail.com"></p>        
+        <button type="button" class="btn btn-primary btn">DONAR</button>
+    </form>
+</div>
 {% endblock %}

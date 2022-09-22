@@ -3,5 +3,13 @@
 {% load static %}
 
 {% block contenido %}
-    <p>Acá van la ropa</p>
+    <div class="contenidoRopa">
+        <form class="formDataRopa">
+            <p>TIPO <input type="text" placeholder="Camisa..."></p>
+            <p>TALLE <input type="text" placeholder="XL..."></p>        
+            <p>COLOR <input type="text" placeholder="Azul con rayas rosa..."></p>        
+            <p>EMAIL <input type="text" placeholder="tumail@gmail.com"></p>        
+            <button type="button" class="btn btn-primary btn">DONAR</button>
+        </form>
+    </div>
 {% endblock %}

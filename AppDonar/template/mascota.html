@@ -3,5 +3,15 @@
 {% load static %}
 
 {% block contenido %}
-    <p>Acá van las mascotas</p>
+<div class="contenidoRopa">
+    <form class="formDataRopa">
+        <p>TIPO <input type="text" placeholder="Perro..."></p>
+        <p>GÉNERO <input type="text" placeholder="Hembra..."></p>        
+        <p>TAMAÑO <input type="text" placeholder="Mediano..."></p>        
+        <p>EDAD (años) <input type="text" placeholder="7..."></p>        
+        <p>CASTRACIÓN <input type="checkbox"></p>        
+        <p>EMAIL <input type="text" placeholder="tumail@gmail.com"></p>        
+        <button type="button" class="btn btn-primary btn">DONAR</button>
+    </form>
+</div>
 {% endblock %}
