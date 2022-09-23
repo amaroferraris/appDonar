@@ -4,12 +4,31 @@
 
 {% block contenido %}
 <div class="contenidoRopa">
-    <form class="formDataRopa">
-        <p>TIPO <input type="text" placeholder="Cama 1 plaza..."></p>
-        <p>COLOR <input type="text" placeholder="Marrón claro..."></p>        
-        <p>FECHA ELABORACIÓN <input type="text" placeholder="10/06/2015"></p>        
-        <p>EMAIL <input type="text" placeholder="tumail@gmail.com"></p>        
-        <button type="button" class="btn btn-primary btn">DONAR</button>
+    <form class="formDataRopa" action="/AppDonar/utensilio/" method="POST"> {% csrf_token %}
+        <p><input type="text" name="tipo" placeholder="cama/heladera/etc"></p>
+        <p><input type="text" name="color" placeholder="color"></p>        
+        <p>FECHA ELABORACIÓN:</p>
+        <p><input type="text" name="fechaElab" placeholder="aaaa-mm-dd"></p>        
+        <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>        
+        <button type="submit" class="btn btn-primary btn">DONAR</button>
     </form>
+</div>
+<div class="contenidoRopa">
+    <form class="formDataRopa" action="/AppDonar/buscar_utensilio/" method="GET">
+        <input type="text" name="tipo" placeholder="cama/heladera/mesa/etc">
+        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+    </form>
+</div>
+<div>
+    {% if utensilio %}
+    <ul>
+        {% for utensilio in utensilio %}
+        <li>COLOR --> {{utensilio.color}}</li>        
+        <li>FECHA ELABORACIÓN --> {{utensilio.fechaElab}}</li>        
+        <li>CONTACTO --> {{utensilio.email}}</li>       
+        <p></p>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 {% endblock %}

@@ -8,6 +8,9 @@ class Ropa(models.Model):
     color = models.CharField(max_length=50)
     email = models.EmailField()
 
+    def __str__(self):
+        return f'Tipo: {self.tipo} | Talle: {self.talle} | Color: {self.color} | Email: {self.email} '
+
 class Utensilio(models.Model):
 
     tipo = models.CharField(max_length=50)
@@ -15,6 +18,9 @@ class Utensilio(models.Model):
     fechaElab = models.DateField()
     email = models.EmailField()
 
+    def __str__(self):
+        return f'Tipo: {self.tipo} | Color: {self.color} | Fecha elaboración: {self.fechaElab} | Email: {self.email} '
+        
 class Mascota(models.Model):
 
     tipo = models.CharField(max_length=50)
@@ -23,3 +29,6 @@ class Mascota(models.Model):
     edad = models.IntegerField()
     castracion = models.BooleanField()
     email = models.EmailField()
+
+    def __str__(self):
+        return f'Tipo: {self.tipo} | Género: {self.genero} | Edad: {self.edad} | Castración: {self.castracion} | Email: {self.email} '

@@ -24,9 +24,9 @@
     border-radius: 20px !important;
 }
 
-/* ::-webkit-input-placeholder {
+::-webkit-input-placeholder {
    font-style: italic;
-} */
+}
 :-moz-placeholder {
    font-style: italic;  
 }

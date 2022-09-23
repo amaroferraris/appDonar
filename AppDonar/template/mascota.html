@@ -4,14 +4,34 @@
 
 {% block contenido %}
 <div class="contenidoRopa">
-    <form class="formDataRopa">
-        <p>TIPO <input type="text" placeholder="Perro..."></p>
-        <p>GÉNERO <input type="text" placeholder="Hembra..."></p>        
-        <p>TAMAÑO <input type="text" placeholder="Mediano..."></p>        
-        <p>EDAD (años) <input type="text" placeholder="7..."></p>        
-        <p>CASTRACIÓN <input type="checkbox"></p>        
-        <p>EMAIL <input type="text" placeholder="tumail@gmail.com"></p>        
-        <button type="button" class="btn btn-primary btn">DONAR</button>
+    <form class="formDataRopa" action="/AppDonar/mascota/" method="POST"> {% csrf_token %}
+        <p></p><input type="text" name="tipo" placeholder="perro/gato/etc"></p>
+        <p><input type="text" name="genero" placeholder="macho/hembra"></p>        
+        <p><input type="text" name="tamaño" placeholder="chica/mediana/grande"></p>        
+        <p><input type="text" name="edad" placeholder="años"></p>        
+        <p><input type="text" name="castracion" placeholder="¿castrado/a? True/False"></p>        
+        <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>        
+        <button type="submit" class="btn btn-primary btn">DONAR</button>
     </form>
+</div>
+<div class="contenidoRopa">
+    <form class="formDataRopa" action="/AppDonar/buscar_mascota/" method="GET">
+        <input type="text" name="tipo" placeholder="perro/gato/hamster/etc">
+        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+    </form>
+</div>
+<div>
+    {% if mascota %}
+    <ul>
+        {% for mascota in mascota %}
+        <li>GÉNERO --> {{mascota.genero}}</li>
+        <li>TAMAÑO --> {{mascota.tamaño}}</li>        
+        <li>EDAD --> {{mascota.edad}} año/s</li>  
+        <li>CASTRADO --> {{mascota.castracion}}</li>        
+        <li>CONTACTO --> {{mascota.email}}</li>       
+        <p></p>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 {% endblock %}
