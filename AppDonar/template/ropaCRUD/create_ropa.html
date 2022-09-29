@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+<link rel="stylesheet" href="{%static 'css/myestilo.css'%}">
+
+<form class="formDataRopa" method="POST" action="/AppDonar/create_ropa/"> {% csrf_token %}
+    <p><input type="text" name="tipo" placeholder="camisa/zapatillas/etc"></p>
+    <p><input type="text" name="talle" placeholder="xs/m/xl/etc"></p>        
+    <p><input type="text" name="color" placeholder="azul/amarillo/verde/etc"></p>        
+    <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>  
+    <button type="submit" class="btn btn-primary btndj">DONAR</button>
+</form>

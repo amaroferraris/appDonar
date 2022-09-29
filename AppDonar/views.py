@@ -106,3 +106,126 @@ def buscar_mascota(request):
     else:
         respuesta = "No disponible"
     return HttpResponse(respuesta)
+
+### CRUD ###
+
+def create_ropa(request):
+    if request.method == "POST":
+        ropa = Ropa(tipo = request.POST['tipo'], talle = request.POST['talle'], 
+        color = request.POST['color'], email = request.POST['email'])
+        ropa.save()
+        ropa = Ropa.objects.all()
+        return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
+    return render(request, "ropaCRUD/create_ropa.html")
+
+def read_ropa(request):
+    ropa = Ropa.objects.all()
+    return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
+
+def update_ropa(request, ropa_id):
+    ropa = Ropa.objects.get(id = ropa_id)
+
+    if request.method == 'POST':
+        formulario = form_ropa(request.POST)
+
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            ropa.tipo = informacion['tipo']
+            ropa.talle = informacion['talle']
+            ropa.color = informacion['color']
+            ropa.email = informacion['email']
+            ropa.save()
+            ropa = Ropa.objects.all()
+        return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
+    else:
+        formulario = form_ropa(initial={"tipo" : ropa.tipo, "talle" : ropa.talle, "color" : ropa.color, "email" : ropa.email})
+    return render(request, "ropaCRUD/update_ropa.html", {"formulario":formulario})
+
+def delete_ropa(request, ropa_id):
+    ropa = Ropa.objects.get(id = ropa_id)
+    ropa.delete()
+    ropa = Ropa.objects.all()
+    return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
+######################################################################
+def create_mascota(request):
+    if request.method == "POST":
+        mascota = Mascota(tipo = request.POST['tipo'], genero = request.POST['genero'], 
+        tamaño = request.POST['tamaño'], edad = request.POST['edad'], castracion = request.POST['castracion'],
+        email = request.POST['email'])
+        mascota.save()
+        mascota = Mascota.objects.all()
+        return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
+    return render(request, "mascotaCRUD/create_mascota.html")
+
+def read_mascota(request):
+    mascota = Mascota.objects.all()
+    return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
+
+def update_mascota(request, mascota_id):
+    mascota = Mascota.objects.get(id = mascota_id)
+
+    if request.method == 'POST':
+        formulario = form_mascota(request.POST)
+
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            mascota.tipo = informacion['tipo']
+            mascota.genero = informacion['genero']
+            mascota.tamaño = informacion['tamaño']
+            mascota.edad = informacion['edad']
+            mascota.castracion = informacion['castracion']
+            mascota.email = informacion['email']
+            mascota.save()
+            mascota = Mascota.objects.all()
+        return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
+    else:
+        formulario = form_mascota(initial={"tipo" : mascota.tipo, "genero" : mascota.genero, "tamaño" : mascota.tamaño, 
+        "edad" : mascota.edad, "castracion" : mascota.castracion, "email" : mascota.email})
+    return render(request, "mascotaCRUD/update_mascota.html", {"formulario":formulario})
+
+def delete_mascota(request, mascota_id):
+    mascota = Mascota.objects.get(id = mascota_id)
+    mascota.delete()
+    mascota = Mascota.objects.all()
+    return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
+######################################################################
+def create_utensilio(request):
+    if request.method == "POST":
+        utensilio = Utensilio(tipo = request.POST['tipo'], color = request.POST['color'], 
+        fechaElab = request.POST['fechaElab'], email = request.POST['email'])
+        utensilio.save()
+        utensilio = Utensilio.objects.all()
+        return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
+    return render(request, "utensilioCRUD/create_utensilio.html")
+
+def read_utensilio(request):
+    utensilio = Utensilio.objects.all()
+    return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
+
+def update_utensilio(request, utensilio_id):
+    utensilio = Utensilio.objects.get(id = utensilio_id)
+
+    if request.method == 'POST':
+        formulario = form_utensilio(request.POST)
+
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            utensilio.tipo = informacion['tipo']
+            utensilio.color = informacion['color']
+            utensilio.fechaElab = informacion['fechaElab']
+            utensilio.email = informacion['email']
+            utensilio.save()
+            utensilio = Utensilio.objects.all()
+        return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
+    else:
+        formulario = form_utensilio(initial={"tipo" : utensilio.tipo, "color" : utensilio.color, 
+        "fechaElab" : utensilio.fechaElab, "email" : utensilio.email})
+    return render(request, "utensilioCRUD/update_utensilio.html", {"formulario":formulario})
+
+def delete_utensilio(request, utensilio_id):
+    utensilio = Utensilio.objects.get(id = utensilio_id)
+    utensilio.delete()
+    utensilio = Utensilio.objects.all()
+    return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
+
+# 1.51 CLASE 22 
