@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from AppDonar.models import Mascota, Ropa, Utensilio
 from AppDonar.forms import *
 
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     return render(request, "inicio.html")
+
+@login_required
 
 def home(request):
     return render(request, "home.html")
@@ -228,4 +234,35 @@ def delete_utensilio(request, utensilio_id):
     utensilio = Utensilio.objects.all()
     return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
 
-# 1.51 CLASE 22 
+
+##########  L O G I N  #################
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
+        if form.is_valid():
+            user = form.cleaned_data.get('username')
+            pwd = form.cleaned_data.get('password')
+
+            user = authenticate(username = user, password = pwd)
+
+            if user is not None:
+                login(request, user)
+                return render(request, "home.html")
+            else:
+                return render(request, "login.html", {"form":form})
+        else:
+            return render(request, "login.html", {"form":form})
+    form = AuthenticationForm()
+    return render(request, 'login.html', {"form":form})
+
+def registro(request):
+    if request.method == 'POST':
+        # form = UserCreationForm(request.POST)
+        form = UserRegisterFrom(request.POST)
+        if form.is_valid():
+            # username = form.cleaned_data["username"]
+            form.save()
+            return redirect("/login")
+    # form = UserCreationForm()
+    form = UserRegisterFrom()
+    return render(request, "registro.html", {"form":form})

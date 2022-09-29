@@ -1,12 +1,14 @@
 from django.urls import path
 from AppDonar.views import *
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', home),
+    path('inicio/', inicio),
     path('AppDonar/ropa/', ropa),
     path('AppDonar/utensilio/', utensilio),
     path('AppDonar/mascota/', mascota),
-    path('AppDonar/home/', home),
+    # path('AppDonar/home/', home),
     # APIS
     path('AppDonar/api_ropa/', api_ropa),
     path('AppDonar/api_utensilio/', api_utensilio),
@@ -30,4 +32,7 @@ urlpatterns = [
     path('AppDonar/read_utensilio/', read_utensilio),
     path('AppDonar/update_utensilio/<utensilio_id>', update_utensilio),
     path('AppDonar/delete_utensilio/<utensilio_id>', delete_utensilio),
+    path('login/', login_request),
+    path('registro/', registro),
+    path('logout/', LogoutView.as_view(template_name='inicio.html'), name='Logout')
 ]

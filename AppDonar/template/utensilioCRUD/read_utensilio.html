@@ -1,12 +1,18 @@
-{% load static %}
-<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
-{% for utensilio in utensilio %}
-    <li>
-        {{ utensilio }}
-        <a href="/AppDonar/update_utensilio/{{ utensilio.id }}" class="btn btn-warning">Edit</a>
-        <a href="/AppDonar/delete_utensilio/{{ utensilio.id }}" class="btn btn-danger">Delete</a>
-    </li>
-    <br>
-{% endfor %}
+{% extends "../home.html" %}
 
-<a class="btn btn-success" href="/AppDonar/create_utensilio/">Agregar utensilio</a>
+{% load static %}
+<!-- comentando bootstrap porque lo está heredando de home (linea 1) -->
+<!-- <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}"> -->
+
+{% block contenido %}
+{% for utensilio in utensilio %}
+        <li>
+            {{ utensilio }}
+            <a href="/AppDonar/update_utensilio/{{ utensilio.id }}" class="btn btn-warning">Edit</a>
+            <a href="/AppDonar/delete_utensilio/{{ utensilio.id }}" class="btn btn-danger">Delete</a>
+        </li>
+        <br>
+    {% endfor %}
+
+    <a class="btn btn-success" href="/AppDonar/create_utensilio/">Agregar utensilio</a>
+{% endblock %}
