@@ -258,11 +258,14 @@ def login_request(request):
 def registro(request):
     if request.method == 'POST':
         # form = UserCreationForm(request.POST)
-        form = UserRegisterFrom(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             # username = form.cleaned_data["username"]
             form.save()
-            return redirect("/login")
+            return redirect("/login/")
     # form = UserCreationForm()
-    form = UserRegisterFrom()
-    return render(request, "registro.html", {"form":form})
+    else:
+        form = UserRegisterForm()
+        return render(request, "registro.html", {"form":form})
+
+## 2.09 CLASE 23 no me anda el redirect, para registrar y que me lleve directo al login

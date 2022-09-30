@@ -23,11 +23,11 @@ class form_mascota(forms.Form):
     castracion = forms.BooleanField()
     email = forms.EmailField()
 
-class UserRegisterFrom(UserCreationForm):
+class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput)
-
+ 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']

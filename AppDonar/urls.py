@@ -8,7 +8,7 @@ urlpatterns = [
     path('AppDonar/ropa/', ropa),
     path('AppDonar/utensilio/', utensilio),
     path('AppDonar/mascota/', mascota),
-    # path('AppDonar/home/', home),
+    path('AppDonar/home/', home),
     # APIS
     path('AppDonar/api_ropa/', api_ropa),
     path('AppDonar/api_utensilio/', api_utensilio),
