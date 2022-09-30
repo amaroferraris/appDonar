@@ -267,5 +267,3 @@ def registro(request):
     else:
         form = UserRegisterForm()
         return render(request, "registro.html", {"form":form})
-
-## 2.09 CLASE 23 no me anda el redirect, para registrar y que me lleve directo al login
