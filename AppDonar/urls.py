@@ -32,7 +32,12 @@ urlpatterns = [
     path('AppDonar/read_utensilio/', read_utensilio),
     path('AppDonar/update_utensilio/<utensilio_id>', update_utensilio),
     path('AppDonar/delete_utensilio/<utensilio_id>', delete_utensilio),
+    # LOGIN
     path('login/', login_request),
     path('registro/', registro),
-    path('logout/', LogoutView.as_view(template_name='inicio.html'), name='Logout')
+    path('logout/', LogoutView.as_view(template_name='inicio.html'), name='Logout'),
+    # PERFIL
+    path('perfil/', perfilView),
+    path('perfil/editarPerfil/', editarPerfil),
+    path('perfil/changepass/', changepass),
 ]
