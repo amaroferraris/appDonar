@@ -40,4 +40,6 @@ urlpatterns = [
     path('perfil/', perfilView),
     path('perfil/editarPerfil/', editarPerfil),
     path('perfil/changepass/', changepass),
+    # AVATAR
+    path('perfil/changeAvatar/', agregarAvatar),
 ]
