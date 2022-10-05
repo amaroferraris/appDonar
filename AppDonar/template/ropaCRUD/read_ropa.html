@@ -1,17 +1,41 @@
 {% extends "../home.html" %}
-{% load static %}
-<!-- comentando bootstrap porque lo está heredando de home (linea 1) -->
-<!-- <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}"> -->
 
-{% block contenido %}
-{% for ropa in ropa %}
-        <li>
-            {{ ropa }}
-            <a href="/AppDonar/update_ropa/{{ ropa.id }}" class="btn btn-warning">Edit</a>
-            <a href="/AppDonar/delete_ropa/{{ ropa.id }}" class="btn btn-danger">Delete</a>
-        </li>
-        <br>
-    {% endfor %}
-
-    <a class="btn btn-success" href="/AppDonar/create_ropa/">Agregar ropa</a>
+{% block contenido2 %}
+<div>   
+    {% if ropa %}
+    <ul>
+            {% for ropa in ropa %}
+            <li>TALLE --> {{ropa.talle}}</li>
+            <li>COLOR --> {{ropa.color}}</li>        
+            <li>CONTACTO --> {{ropa.email}}</li>       
+            <p></p>
+            {% endfor %}      
+        </ul>
+    {% endif %}
+    </div>
 {% endblock %}
+{% block contenido %}
+<div class="contenidoRopa">
+    <form class="formDataRopa" action="/AppDonar/buscar_ropa/" method="GET">
+        <input type="text" name="tipo" placeholder="camisa/remera/pantalon/etc">
+        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+    </form>
+</div>
+<p>
+
+    <form class="formDataRopa" action="/AppDonar/read_ropa/" method="GET">
+        <button type="submit" class="btn btn-success btn">VER TODO</button> <!-- botón VER TODO, hacer funcional -->
+    </form>
+</p>
+{% for ropa in ropa %}
+<li>
+    {{ ropa }}
+    <a href="/AppDonar/update_ropa/{{ ropa.id }}" class="btn btn-warning">Edit</a>
+    <a href="/AppDonar/delete_ropa/{{ ropa.id }}" class="btn btn-danger">Delete</a>
+</li>
+<br>
+{% endfor %}
+
+<a class="btn btn-success" href="/AppDonar/create_ropa/">Agregar ropa</a>
+{% endblock %}
+<!-- NO LOGRO HACER QUE APAREZCA LO SIGUIENTE DEBAJO DE BUSCAR_ROPA -->

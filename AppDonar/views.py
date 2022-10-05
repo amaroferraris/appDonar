@@ -112,7 +112,7 @@ def buscar_ropa(request):
     if request.GET:
         tipo = request.GET["tipo"]
         ropa = Ropa.objects.filter(tipo__icontains = tipo)
-        return render(request, "ropa.html", {"ropa":ropa})
+        return render(request, "./ropaCRUD/read_ropa.html", {"ropa":ropa})
     else:
         respuesta = "No disponible"
     return HttpResponse(respuesta)
