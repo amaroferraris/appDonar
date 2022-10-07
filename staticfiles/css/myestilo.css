@@ -1,0 +1,38 @@
+.contenido1{
+    position: relative;
+    top: 60px;
+    border: 1px solid black;
+}
+
+.contenidoRopa{
+    background-color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.formDataRopa{
+    display: flex;
+    flex-direction: column;
+    width: 500 px;
+    gap: 10px;
+    background-color: #dddddd;
+}
+
+.btn{
+    border-radius: 20px !important;
+}
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;  
+}
+::-moz-placeholder {
+   font-style: italic;  
+}
+:-ms-input-placeholder {  
+   font-style: italic; 
+}
