@@ -3,8 +3,8 @@ from AppDonar.views import *
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('', home),
-    path('inicio/', inicio),
+    path('', inicio),
+    path('home/', home),
     path('AppDonar/ropa/', ropa),
     path('AppDonar/utensilio/', utensilio),
     path('AppDonar/mascota/', mascota),
