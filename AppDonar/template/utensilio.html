@@ -1,6 +1,6 @@
 {% extends "home.html" %}
 
-{% load static %}
+<!-- {% load static %} -->
 
 {% block contenido %}
 
@@ -11,19 +11,18 @@
         
         {{ form.as_p }}
         
-        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">Registrar</button>
+        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">DONAR</button>
     </form>
 </div>
-
 <div class="contenidoRopa">
     <form class="formDataRopa" action="/AppDonar/buscar_utensilio/" method="GET">
         <input type="text" name="tipo" placeholder="cama/heladera/mesa/etc">
-        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+        <button type="submit" class="btn btn-warning btn">BUSCAR</button>
     </form>
 </div>
 <div>
     {% if utensilio %}
-    <ul>
+    <ul align="left">
         {% for utensilio in utensilio %}
         <li>COLOR --> {{utensilio.color}}</li>        
         <li>FECHA ELABORACIÓN --> {{utensilio.fechaElab}}</li>        

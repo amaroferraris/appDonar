@@ -27,15 +27,19 @@ def home(request):
 def ropa(request):
     form = form_ropa()
     if request.method == 'POST':
-        ropa = Ropa(tipo = request.POST['tipo'], talle = request.POST['talle'],
-        color = request.POST['color'], email = request.POST['email'])
-        ropa.save()
-        avatar = Avatar.objects.filter(user = request.user.id)
-        try:
-            avatar = avatar[0].image.url
-        except:
-            avatar = None
-        return render(request, 'home.html', {'avatar': avatar})
+        form = form_ropa(request.POST, request.FILES)
+        if form.is_valid():
+            ropa = Ropa(
+                tipo = request.POST['tipo'], talle = request.POST['talle'],
+                color = request.POST['color'], email = request.POST['email'], imagen = form.cleaned_data['imagen']
+            )
+            ropa.save()
+            avatar = Avatar.objects.filter(user = request.user.id)
+            try:
+                avatar = avatar[0].image.url
+            except:
+                avatar = None
+            return render(request, 'ropa.html', {'avatar': avatar})
     return render(request, "ropa.html", {'form':form})
 
 
@@ -149,7 +153,7 @@ def buscar_mascota(request):
         respuesta = "No disponible"
     return HttpResponse(respuesta)
 
-### CRUD ### sin CREATE & READ porque la web no los necesita
+### CRUD ### sin CREATE & READ porque la web no los necesita, de todos modos no eliminé las templates
 
 def update_ropa(request, ropa_id):
     ropa = Ropa.objects.get(id = ropa_id)

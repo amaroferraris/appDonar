@@ -1,23 +1,25 @@
-.contenido1{
+/* .contenido1{
     position: relative;
     top: 60px;
     border: 1px solid black;
-}
+} */
 
 .contenidoRopa{
-    background-color: #cccccc;
+    background-color: rgb(247, 224, 194);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    border-bottom-right-radius: 50%; border-top-left-radius: 50%;
 }
 
 .formDataRopa{
+    background-color: rgba(247, 224, 194, 0.938);
     display: flex;
     flex-direction: column;
     width: 500 px;
     gap: 10px;
-    background-color: #dddddd;
+    border-bottom-left-radius: 50%; border-top-right-radius: 50%;
 }
 
 .btn{

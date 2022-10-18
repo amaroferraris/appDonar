@@ -3,17 +3,6 @@
 {% load static %}
 
 {% block contenido %}
-<!-- <div class="contenidoRopa">
-    <form class="formDataRopa" action="/AppDonar/mascota/" method="POST"> {% csrf_token %}
-        <p></p><input type="text" name="tipo" placeholder="perro/gato/etc"></p>
-        <p><input type="text" name="genero" placeholder="macho/hembra"></p>        
-        <p><input type="text" name="tamaño" placeholder="chica/mediana/grande"></p>        
-        <p><input type="text" name="edad" placeholder="años"></p>        
-        <p>¿Castrado/a?<input type="checkbox" name="castracion"></p>        
-        <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>        
-        <button type="submit" class="btn btn-primary btn">DONAR</button>
-    </form>
-</div> -->
 <div align="center">
     <h2 style="justify-self: center;">MASCOTAS</h2>
     <form class="formDataRopa" action="" method="POST">
@@ -21,7 +10,7 @@
         
         {{ form.as_p }}
         
-        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">Registrar</button>
+        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">DONAR</button>
     </form>
 </div>
 
@@ -29,12 +18,12 @@
 <div class="contenidoRopa">
     <form class="formDataRopa" action="/AppDonar/buscar_mascota/" method="GET">
         <input type="text" name="tipo" placeholder="perro/gato/hamster/etc">
-        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+        <button type="submit" class="btn btn-warning btn">BUSCAR</button>
     </form>
 </div>
 <div>
     {% if mascota %}
-    <ul>
+    <ul align="left">
         {% for mascota in mascota %}
         <li>GÉNERO --> {{mascota.genero}}</li>
         <li>TAMAÑO --> {{mascota.tamaño}}</li>        

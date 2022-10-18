@@ -14,8 +14,8 @@ class form_ropa(forms.Form):
 
 class form_utensilio(forms.Form):
 
-    tipo = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Cama/Heladera/Etc'}))
-    color = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Blanco/Verde/Etc'}))
+    tipo = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'cama / heladera / etc'}))
+    color = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'blanco / verde / etc'}))
     fechaElab = forms.DateField(label='Fecha de elaboración', widget=forms.TextInput(attrs={'placeholder': 'AAAA-MM-DD'}))
     email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
     imagen = forms.ImageField()
@@ -62,4 +62,3 @@ class ChangePasswordForm(PasswordChangeForm):
 
 class avatarFormulario(forms.Form):
    avatar = forms.ImageField()
-

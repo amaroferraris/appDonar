@@ -6,19 +6,20 @@
 
 <div align="center">
 <h2 style="justify-self: center;">ROPA</h2>
-    <form class="formDataRopa" action="" method="POST">
+<!--                                                   acá estaba la posta para que se guarden las imágenes, creo -->
+    <form class="formDataRopa" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
         {{ form.as_p }}
         
-        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">Registrar</button>
+        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">DONAR</button>
     </form>
 </div>
 
 <div class="contenidoRopa">
-    <form action="/AppDonar/buscar_ropa/" method="GET">
+    <form class="formDataRopa" action="/AppDonar/buscar_ropa/" method="GET">
         <input type="text" name="tipo" placeholder="camisa/remera/pantalon/etc">
-        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+        <button type="submit" class="btn btn-warning btn">BUSCAR</button>
     </form>
 </div>
 <div>
@@ -28,7 +29,7 @@
         <li>TALLE --> {{ropa.talle}}</li>
         <li>COLOR --> {{ropa.color}}</li>        
         <li>{{ropa.email}}</li>      
-        <li>{{ropa.imagen}}</li>      
+        <img src="{{ropa.imagen}}" alt="imagen" style="max-height:50px">     
         <p></p>
         {% endfor %}      
     </ul>
