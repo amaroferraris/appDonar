@@ -3,31 +3,35 @@
 {% load static %}
 
 {% block contenido %}
-    <div class="contenidoRopa">
-        <form class="formDataRopa" action="/AppDonar/ropa/" method="POST"> {% csrf_token %}
-            <p><input type="text" name="tipo" placeholder="camisa/zapatillas/etc"></p>
-            <p><input type="text" name="talle" placeholder="xs/m/xl/etc"></p>        
-            <p><input type="text" name="color" placeholder="azul/amarillo/verde/etc"></p>        
-            <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>        
-            <button type="submit" class="btn btn-primary btn">DONAR</button>
-        </form>
-    </div>
-    <div class="contenidoRopa">
-        <form class="formDataRopa" action="/AppDonar/buscar_ropa/" method="GET">
-            <input type="text" name="tipo" placeholder="camisa/remera/pantalon/etc">
-            <button type="submit" class="btn btn-primary btn">BUSCAR</button>
-        </form>
-    </div>
-    <div>
-        {% if ropa %}
-        <ul>
-            {% for ropa in ropa %}
-            <li>TALLE --> {{ropa.talle}}</li>
-            <li>COLOR --> {{ropa.color}}</li>        
-            <li>CONTACTO --> {{ropa.email}}</li>       
-            <p></p>
-            {% endfor %}      
-        </ul>
-        {% endif %}
-    </div>
+
+<div align="center">
+<h2 style="justify-self: center;">ROPA</h2>
+    <form class="formDataRopa" action="" method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">Registrar</button>
+    </form>
+</div>
+
+<div class="contenidoRopa">
+    <form action="/AppDonar/buscar_ropa/" method="GET">
+        <input type="text" name="tipo" placeholder="camisa/remera/pantalon/etc">
+        <button type="submit" class="btn btn-primary btn">BUSCAR</button>
+    </form>
+</div>
+<div>
+    {% if ropa %}
+    <ul align="left">
+        {% for ropa in ropa %}
+        <li>TALLE --> {{ropa.talle}}</li>
+        <li>COLOR --> {{ropa.color}}</li>        
+        <li>{{ropa.email}}</li>      
+        <li>{{ropa.imagen}}</li>      
+        <p></p>
+        {% endfor %}      
+    </ul>
+    {% endif %}
+</div>
 {% endblock %}

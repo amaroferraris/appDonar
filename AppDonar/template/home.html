@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{%static 'css/myestilo.css'%}">
     <title>APP  DONAR</title>
 </head>
-<body>
+<body style="background-color:rgb(147, 175, 228);text-align:center">
     <nav class="navbar navbar-expand-md navbar-dark fiexed-top bg-dark">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -18,13 +18,13 @@
                         <a style="color: #ffffff" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/home">HOME |</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #cccccc" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/read_ropa">ROPA</a>
+                        <a style="color: #cccccc" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/ropa">ROPA</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #bbbbbb" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/read_utensilio">UTENSILIOS</a>
+                        <a style="color: #bbbbbb" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/utensilio">UTENSILIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #aaaaaa" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/read_mascota">MASCOTAS</a>
+                        <a style="color: #aaaaaa" class="nav-link fw-bold py-1 px-1 active" aria-current="page" href="/AppDonar/mascota">MASCOTAS</a>
                     </li>
                     <li class="nav-item" style="position: absolute; right: 225px">
                         <img src="{{ avatar }}" width="40 px">
@@ -39,10 +39,11 @@
             </div>
         </div>
     </nav>
-    <div class="contenido1">
-        {% block contenido %}
-            <p> Bienvenid@ a la App Donar</p>
-        {% endblock %}
+    <h1 style="color: rgb(29, 73, 129);">Bienvenido/a a la AppDonar</h1>
+    <!-- <div class="contenido1"> -->
+        <div>
+            {% block contenido %}
+            {% endblock %}
     </div>
 </body>
 </html>
