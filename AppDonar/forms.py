@@ -1,29 +1,33 @@
-from dataclasses import field
+# from dataclasses import field
 # from turtle import write_docstringdict
+from logging import PlaceHolder
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
 class form_ropa(forms.Form):
-    tipo = forms.CharField(max_length=50)
-    talle = forms.CharField(max_length=50)
-    color = forms.CharField(max_length=50)
-    email = forms.EmailField()
+    tipo = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'remera / pantalón / zapatillas'}))
+    talle = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 's / m / 35 / 42'}))
+    color = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'verde / blanco / etc'}))
+    email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
+    imagen = forms.ImageField()
 
 class form_utensilio(forms.Form):
 
-    tipo = forms.CharField(max_length=50)
-    color = forms.CharField(max_length=50)
-    fechaElab = forms.DateField()
-    email = forms.EmailField()
+    tipo = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Cama/Heladera/Etc'}))
+    color = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Blanco/Verde/Etc'}))
+    fechaElab = forms.DateField(label='Fecha de elaboración', widget=forms.TextInput(attrs={'placeholder': 'AAAA-MM-DD'}))
+    email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
+    imagen = forms.ImageField()
 
 class form_mascota(forms.Form):
-    tipo = forms.CharField(max_length=50)
-    genero = forms.CharField(max_length=50)
-    tamaño = forms.CharField(max_length=50)
-    edad = forms.IntegerField()
-    castracion = forms.BooleanField()
-    email = forms.EmailField()
+    tipo = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'perro / gato / etc'}))
+    genero = forms.CharField(max_length=50, label='Género', widget=forms.TextInput(attrs={'placeholder': 'macho / hembra'}))
+    tamaño = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'chico / mediano / grande'}))
+    edad = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'años'}))
+    castracion = forms.BooleanField(required=False, label='Castrado/a')
+    email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
+    imagen = forms.ImageField()
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -58,3 +62,4 @@ class ChangePasswordForm(PasswordChangeForm):
 
 class avatarFormulario(forms.Form):
    avatar = forms.ImageField()
+

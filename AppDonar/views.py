@@ -5,6 +5,7 @@ from AppDonar.models import Mascota, Ropa, Utensilio, Avatar
 from AppDonar.forms import *
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordChangeForm
+
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 
 from django.contrib.auth.decorators import login_required
@@ -24,20 +25,22 @@ def home(request):
     return render(request, 'home.html', {'avatar': avatar})
 
 def ropa(request):
-        if request.method == 'POST':
-            ropa = Ropa(tipo = request.POST['tipo'], talle = request.POST['talle'],
-            color = request.POST['color'], email = request.POST['email'])
-            ropa.save()
-            avatar = Avatar.objects.filter(user = request.user.id)
-            try:
-                avatar = avatar[0].image.url
-            except:
-                avatar = None
-            return render(request, 'home.html', {'avatar': avatar})
-        return render(request, "ropa.html")
+    form = form_ropa()
+    if request.method == 'POST':
+        ropa = Ropa(tipo = request.POST['tipo'], talle = request.POST['talle'],
+        color = request.POST['color'], email = request.POST['email'])
+        ropa.save()
+        avatar = Avatar.objects.filter(user = request.user.id)
+        try:
+            avatar = avatar[0].image.url
+        except:
+            avatar = None
+        return render(request, 'home.html', {'avatar': avatar})
+    return render(request, "ropa.html", {'form':form})
 
 
 def utensilio(request):
+    form = form_utensilio()
     if request.method == 'POST':
         utensilio = Utensilio(tipo = request.POST['tipo'], color = request.POST['color'], fechaElab = request.POST['fechaElab'],
         email = request.POST['email'])
@@ -48,13 +51,22 @@ def utensilio(request):
         except:
             avatar = None
         return render(request, 'home.html', {'avatar': avatar})
-    return render(request, "utensilio.html")
+    return render(request, "utensilio.html", {'form':form})
 
 def mascota(request):
+    form = form_mascota()
     if request.method == 'POST':
+        
+        # if 'castracion' in request.POST:
+        #     castracion = True
+
+        # else:
+        #     castracion = False
+        # Lo que sigue es lo mismo de arriba pero más cheto en una sola línea
+        castracion = True if 'castracion' in request.POST else False
+
         mascota = Mascota(tipo = request.POST['tipo'], genero = request.POST['genero'],
-        tamaño = request.POST['tamaño'], edad = request.POST['edad'],
-        castracion = request.POST['castracion'], email = request.POST['email'])
+        tamaño = request.POST['tamaño'], edad = request.POST['edad'], castracion = castracion, email = request.POST['email'])
         mascota.save()
         avatar = Avatar.objects.filter(user = request.user.id)
         try:
@@ -62,49 +74,51 @@ def mascota(request):
         except:
             avatar = None
         return render(request, 'home.html', {'avatar': avatar})
-    return render(request, "mascota.html")
+    return render(request, "mascota.html", {'form':form})
 
-### APIS ###
+# ### APIS ### SIN USO
 
-def api_ropa(request):
-    if request.method == "POST":
-        formulario = form_ropa(request.POST)
-        if formulario.is_valid():
-            informacion = formulario.cleaned_data
-            ropa = Ropa(tipo = informacion['tipo'], talle = informacion['talle'],
-            color = informacion['color'], email = informacion['email'])
-            ropa.save()
-            return render(request, "api_ropa.html")
-    else:
-        formulario = form_ropa()
-    return render(request, "api_ropa.html", {"formulario":formulario})
+# def api_ropa(request):
+#     if request.method == "POST":
+#         formulario = form_ropa(request.POST)
+#         if formulario.is_valid():
+#             informacion = formulario.cleaned_data
+#             ropa = Ropa(tipo = informacion['tipo'], talle = informacion['talle'],
+#             color = informacion['color'], email = informacion['email'])
+#             ropa.save()
+#             return render(request, "api_ropa.html")
+#     else:
+#         formulario = form_ropa()
+#     return render(request, "api_ropa.html", {"formulario":formulario})
 
-def api_utensilio(request):
-    if request.method == "POST":
-        formulario = form_utensilio(request.POST)
-        if formulario.is_valid():
-            informacion = formulario.cleaned_data
-            utensilio = Utensilio(tipo = informacion['tipo'], color = informacion['color'],
-            fechaElab = informacion['fechaElab'], email = informacion['email'])
-            utensilio.save()
-            return render(request, "api_utensilio.html")
-    else:
-        formulario = form_utensilio()
-    return render(request, "api_utensilio.html", {"formulario":formulario})   
+# def api_utensilio(request):
+#     if request.method == "POST":
+#         formulario = form_utensilio(request.POST)
+#         if formulario.is_valid():
+#             informacion = formulario.cleaned_data
+#             utensilio = Utensilio(tipo = informacion['tipo'], color = informacion['color'],
+#             fechaElab = informacion['fechaElab'], email = informacion['email'])
+#             utensilio.save()
+#             return render(request, "api_utensilio.html")
+#     else:
+#         formulario = form_utensilio()
+#     return render(request, "api_utensilio.html", {"formulario":formulario})   
 
-def api_mascota(request):
-    if request.method == "POST":
-        formulario = form_mascota(request.POST)
-        if formulario.is_valid():
-            informacion = formulario.cleaned_data
-            mascota = Mascota(tipo = informacion['tipo'], genero = informacion['genero'],
-            tamaño = informacion['tamaño'], edad = informacion['edad'], castracion = informacion['castracion'],
-            email = informacion['email'])
-            mascota.save()
-            return render(request, "api_mascota.html")
-    else:
-        formulario = form_mascota()
-    return render(request, "api_mascota.html", {"formulario":formulario})
+# def api_mascota(request):
+#     formulario = form_mascota()
+#     if request.method == "POST":
+#         if formulario.is_valid():
+#             informacion = formulario.cleaned_data
+#             mascota = Mascota(
+#                 tipo = informacion['tipo'], genero = informacion['genero'],
+#                 tamaño = informacion['tamaño'], edad = informacion['edad'], castracion = informacion['castracion'],
+#                 email = informacion['email']
+#                 )
+#             mascota.save()
+#             return render(request, "api_mascota.html")
+#     # else:
+#     #     formulario = form_mascota()
+#     return render(request, "api_mascota.html", {"formulario":formulario})
 
 ### BUSCAR ###
 
@@ -112,7 +126,7 @@ def buscar_ropa(request):
     if request.GET:
         tipo = request.GET["tipo"]
         ropa = Ropa.objects.filter(tipo__icontains = tipo)
-        return render(request, "./ropaCRUD/read_ropa.html", {"ropa":ropa})
+        return render(request, "ropa.html", {"ropa":ropa})
     else:
         respuesta = "No disponible"
     return HttpResponse(respuesta)
@@ -135,20 +149,7 @@ def buscar_mascota(request):
         respuesta = "No disponible"
     return HttpResponse(respuesta)
 
-### CRUD ###
-
-def create_ropa(request):
-    if request.method == "POST":
-        ropa = Ropa(tipo = request.POST['tipo'], talle = request.POST['talle'], 
-        color = request.POST['color'], email = request.POST['email'])
-        ropa.save()
-        ropa = Ropa.objects.all()
-        return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
-    return render(request, "ropaCRUD/create_ropa.html")
-
-def read_ropa(request):
-    ropa = Ropa.objects.all()
-    return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
+### CRUD ### sin CREATE & READ porque la web no los necesita
 
 def update_ropa(request, ropa_id):
     ropa = Ropa.objects.get(id = ropa_id)
@@ -175,19 +176,6 @@ def delete_ropa(request, ropa_id):
     ropa = Ropa.objects.all()
     return render(request, "ropaCRUD/read_ropa.html", {"ropa":ropa})
 ######################################################################
-def create_mascota(request):
-    if request.method == "POST":
-        mascota = Mascota(tipo = request.POST['tipo'], genero = request.POST['genero'], 
-        tamaño = request.POST['tamaño'], edad = request.POST['edad'], castracion = request.POST['castracion'],
-        email = request.POST['email'])
-        mascota.save()
-        mascota = Mascota.objects.all()
-        return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
-    return render(request, "mascotaCRUD/create_mascota.html")
-
-def read_mascota(request):
-    mascota = Mascota.objects.all()
-    return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
 
 def update_mascota(request, mascota_id):
     mascota = Mascota.objects.get(id = mascota_id)
@@ -218,19 +206,6 @@ def delete_mascota(request, mascota_id):
     return render(request, "mascotaCRUD/read_mascota.html", {"mascota":mascota})
 
 ######################################################################
-
-def create_utensilio(request):
-    if request.method == "POST":
-        utensilio = Utensilio(tipo = request.POST['tipo'], color = request.POST['color'], 
-        fechaElab = request.POST['fechaElab'], email = request.POST['email'])
-        utensilio.save()
-        utensilio = Utensilio.objects.all()
-        return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
-    return render(request, "utensilioCRUD/create_utensilio.html")
-
-def read_utensilio(request):
-    utensilio = Utensilio.objects.all()
-    return render(request, "utensilioCRUD/read_utensilio.html", {"utensilio":utensilio})
 
 def update_utensilio(request, utensilio_id):
     utensilio = Utensilio.objects.get(id = utensilio_id)
@@ -286,10 +261,8 @@ def login_request(request):
     return render(request, 'login.html', {"form":form})
 
 def registro(request):
-    form = UserRegisterForm(request.POST)
+    form = UserRegisterForm()
     if request.method == 'POST':
-        # form = UserCreationForm(request.POST)
-        # print(form) para debuggear
         if form.is_valid():
 
             form.save()
@@ -297,10 +270,10 @@ def registro(request):
 
     else:
 
+        # form = UserRegisterForm()
         return render(request, "registro.html", {"form":form})
 
-    form = UserRegisterForm()
-    return render(request, "registro.html", {"form":form})
+    # return render(request, "registro.html", {"form":form})
 
 @login_required
 def editarPerfil(request):

@@ -3,16 +3,18 @@
 {% load static %}
 
 {% block contenido %}
-<div class="contenidoRopa">
-    <form class="formDataRopa" action="/AppDonar/utensilio/" method="POST"> {% csrf_token %}
-        <p><input type="text" name="tipo" placeholder="cama/heladera/etc"></p>
-        <p><input type="text" name="color" placeholder="color"></p>        
-        <p>FECHA ELABORACIÓN:</p>
-        <p><input type="text" name="fechaElab" placeholder="aaaa-mm-dd"></p>        
-        <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>        
-        <button type="submit" class="btn btn-primary btn">DONAR</button>
+
+<div align="center">
+    <h2 style="justify-self: center;">UTENSILIOS</h2>
+    <form class="formDataRopa" action="" method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">Registrar</button>
     </form>
 </div>
+
 <div class="contenidoRopa">
     <form class="formDataRopa" action="/AppDonar/buscar_utensilio/" method="GET">
         <input type="text" name="tipo" placeholder="cama/heladera/mesa/etc">
@@ -25,7 +27,8 @@
         {% for utensilio in utensilio %}
         <li>COLOR --> {{utensilio.color}}</li>        
         <li>FECHA ELABORACIÓN --> {{utensilio.fechaElab}}</li>        
-        <li>CONTACTO --> {{utensilio.email}}</li>       
+        <li>{{utensilio.email}}</li>       
+        <li>{{utensilio.imagen}}</li>
         <p></p>
         {% endfor %}
     </ul>

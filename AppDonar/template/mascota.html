@@ -3,17 +3,29 @@
 {% load static %}
 
 {% block contenido %}
-<div class="contenidoRopa">
+<!-- <div class="contenidoRopa">
     <form class="formDataRopa" action="/AppDonar/mascota/" method="POST"> {% csrf_token %}
         <p></p><input type="text" name="tipo" placeholder="perro/gato/etc"></p>
         <p><input type="text" name="genero" placeholder="macho/hembra"></p>        
         <p><input type="text" name="tamaño" placeholder="chica/mediana/grande"></p>        
         <p><input type="text" name="edad" placeholder="años"></p>        
-        <p><input type="text" name="castracion" placeholder="¿castrado/a? True/False"></p>        
+        <p>¿Castrado/a?<input type="checkbox" name="castracion"></p>        
         <p><input type="text" name="email" placeholder="tumail@gmail.com"></p>        
         <button type="submit" class="btn btn-primary btn">DONAR</button>
     </form>
+</div> -->
+<div align="center">
+    <h2 style="justify-self: center;">MASCOTAS</h2>
+    <form class="formDataRopa" action="" method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button style="width: 10%; align-self:center;" type="submit" class="btn btn-success btn">Registrar</button>
+    </form>
 </div>
+
+
 <div class="contenidoRopa">
     <form class="formDataRopa" action="/AppDonar/buscar_mascota/" method="GET">
         <input type="text" name="tipo" placeholder="perro/gato/hamster/etc">
@@ -28,7 +40,8 @@
         <li>TAMAÑO --> {{mascota.tamaño}}</li>        
         <li>EDAD --> {{mascota.edad}} año/s</li>  
         <li>CASTRADO --> {{mascota.castracion}}</li>        
-        <li>CONTACTO --> {{mascota.email}}</li>       
+        <li>{{mascota.email}}</li>  
+        <li>{{mascota.imagen}}</li> 
         <p></p>
         {% endfor %}
     </ul>
