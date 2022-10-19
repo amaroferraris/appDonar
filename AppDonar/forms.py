@@ -30,9 +30,9 @@ class form_mascota(forms.Form):
     imagen = forms.ImageField()
 
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField()
-    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput)
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'placeholder': '*********'}))
+    password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput(attrs={'placeholder': '*********'}))
  
     class Meta:
         model = User
@@ -40,7 +40,7 @@ class UserRegisterForm(UserCreationForm):
         help_texts = {k:"" for k in fields}
 
 class UserEditForm(UserChangeForm):
-    username = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Username'}))
+    username = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Usuario'}))
     email = forms.EmailField(widget= forms.TextInput(attrs={'placeholder':'Email'}))
     first_name = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'First name'}))
     last_name = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Last name'}))
@@ -51,9 +51,9 @@ class UserEditForm(UserChangeForm):
         fields = ['username', 'email', 'first_name', 'last_name', 'password']
 
 class ChangePasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(label='', widget= forms.PasswordInput(attrs={'placeholder':'Old Password'}))
-    new_password1 = forms.CharField(label='', widget= forms.PasswordInput(attrs={'placeholder':'New Password'}))
-    new_password2 = forms.CharField(label='', widget= forms.PasswordInput(attrs={'placeholder':'Confirm new password'}))
+    old_password = forms.CharField(label='', widget= forms.PasswordInput(attrs={'placeholder':'Contraseña actual'}))
+    new_password1 = forms.CharField(label='', widget= forms.PasswordInput(attrs={'placeholder':'Contraseña nueva'}))
+    new_password2 = forms.CharField(label='', widget= forms.PasswordInput(attrs={'placeholder':'Confirmar contraseña nueva'}))
 
     class Meta:
         model = User

@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
 </head>
-<body>
-    <form action="" method="POST">
+<body style="background-color: rgb(240, 193, 132);" >
+    <h2 align="center" style="color: rgb(87, 70, 49); font-style: italic;">¡Bienvenido/a!</h2>
+    <form align="center" style="background-color: rgb(247, 224, 194); border-bottom-right-radius: 50%; border-top-left-radius: 50%;" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button type="submit">Registrar</button>
+        <button type="submit">Register</button>
     </form>
+    <footer style="color: rgba(110, 76, 31, 0.543); padding: 10%;" align="center">AppDonar - 2022</footer>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <h1>Cambiar contaseña</h1>
 <h1>{{ usuario }}</h1>
 
-<form action="" method="POST"> {% csrf_token %}
-    <table>
+<body align="center" style="background-color: rgb(240, 193, 132);" >
+    <form style="background-color: rgb(247, 224, 194); border-bottom-right-radius: 50%; border-top-left-radius: 50%;" method="POST">{% csrf_token %}
+    <table align="center" >
         {{ form.as_table }}
     </table>
     <input type="submit" value="Aceptar">
