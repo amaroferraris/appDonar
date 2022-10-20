@@ -3,3 +3,6 @@ https://www.youtube.com/watch?v=aNk2CAkHvlE&ab_channel=DennisIvy
 Link para trabajar con imágenes
 
 No llegué a resolverlo, es lo que más tiempo me llegó y vence el plazo de entrega.
+
+para subir a GitHub:
+git push origin2 master
