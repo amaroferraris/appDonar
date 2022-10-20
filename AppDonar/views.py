@@ -31,7 +31,8 @@ def ropa(request):
         if form.is_valid():
             ropa = Ropa(
                 tipo = request.POST['tipo'], talle = request.POST['talle'],
-                color = request.POST['color'], email = request.POST['email'], imagen = form.cleaned_data['imagen']
+                color = request.POST['color'], email = request.POST['email'], 
+                # imagen = form.cleaned_data['imagen']
             )
             ropa.save()
             avatar = Avatar.objects.filter(user = request.user.id)
@@ -54,7 +55,7 @@ def utensilio(request):
             avatar = avatar[0].image.url
         except:
             avatar = None
-        return render(request, 'home.html', {'avatar': avatar})
+        return render(request, 'utensilio.html', {'avatar': avatar})
     return render(request, "utensilio.html", {'form':form})
 
 def mascota(request):
@@ -77,7 +78,7 @@ def mascota(request):
             avatar = avatar[0].image.url
         except:
             avatar = None
-        return render(request, 'home.html', {'avatar': avatar})
+        return render(request, 'mascota.html', {'avatar': avatar})
     return render(request, "mascota.html", {'form':form})
 
 # ### APIS ### SIN USO

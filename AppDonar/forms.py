@@ -10,7 +10,7 @@ class form_ropa(forms.Form):
     talle = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 's / m / 35 / 42'}))
     color = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'verde / blanco / etc'}))
     email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
-    imagen = forms.ImageField()
+    # imagen = forms.ImageField()
 
 class form_utensilio(forms.Form):
 
@@ -18,7 +18,7 @@ class form_utensilio(forms.Form):
     color = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'blanco / verde / etc'}))
     fechaElab = forms.DateField(label='Fecha de elaboración', widget=forms.TextInput(attrs={'placeholder': 'AAAA-MM-DD'}))
     email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
-    imagen = forms.ImageField()
+    # imagen = forms.ImageField()
 
 class form_mascota(forms.Form):
     tipo = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'perro / gato / etc'}))
@@ -27,7 +27,7 @@ class form_mascota(forms.Form):
     edad = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'años'}))
     castracion = forms.BooleanField(required=False, label='Castrado/a')
     email = forms.EmailField(label='Contacto', widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
-    imagen = forms.ImageField()
+    # imagen = forms.ImageField()
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'tuemail@gmail.com'}))
