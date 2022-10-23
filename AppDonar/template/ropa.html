@@ -2,8 +2,7 @@
 
 {% load static %}
 
-{% block contenido %}
-
+<!-- {% block contenido %} -->
 <div align="center">
 <h2 style="justify-self: center;">ROPA</h2>
 <!--                                                   acá estaba la posta para que se guarden las imágenes, creo -->
@@ -33,6 +32,7 @@
         <p></p>
         {% endfor %}      
     </ul>
+    {% else %} <p style="padding: 5%;" align="center">No hay resultados.</p>
     {% endif %}
 </div>
-{% endblock %}
+<!-- {% endblock %} -->

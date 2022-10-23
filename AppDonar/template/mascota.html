@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block contenido %}
+<!-- {% block contenido %} -->
 <div align="center">
     <h2 style="justify-self: center;">MASCOTAS</h2>
     <form class="formDataRopa" action="" method="POST">
@@ -34,6 +34,7 @@
         <p></p>
         {% endfor %}
     </ul>
+    {% else %} <p style="padding: 5%;" align="center">No hay resultados.</p>
     {% endif %}
 </div>
-{% endblock %}
+<!-- {% endblock %} -->

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/myestilo.css'%}">
     <title>Login</title>
 </head>
-<body style="background-color: rgb(240, 193, 132);" >
+<body class="templatesBase" >
     <h2 align="center" style="color: rgb(87, 70, 49);"><i>¡Bienvenido/a de nuevo!</i></h2>
     <form align="center" style="background-color: rgb(247, 224, 194); border-bottom-right-radius: 50%; border-top-left-radius: 50%;" method="POST">
         {% csrf_token %}
