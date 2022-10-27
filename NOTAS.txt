@@ -6,3 +6,28 @@ No llegué a resolverlo, es lo que más tiempo me llegó y vence el plazo de ent
 
 para subir a GitHub:
 git push origin2 master
+
+DEJO ACÁ para empezar este nuevo curso
+
+https://www.youtube.com/watch?v=xv_bwpA_aEA&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&ab_channel=DennisIvy
+
+Descripción de la app:
+
+- App para donaciones, la idea es que el usuario pueda encontrar o donar lo que quiera (ropa, cosas o mascotas)
+- A su vez podés hacerte una cuenta, ponerle foto de perfil y qué sé yo
+
+- La cuenta es Amaro y la contraseña Amaro
+
+Commands:
+
+- python manage.py runserver (correr la web)
+
+- python manage.py makemigrations
+- python manage.py migrate (actualizar la base de datos)
+
+- git status (saber qué onda git)
+- git branch (ver las ramas)
+- git checkout <nombre_de_rama> (pasarse a esa rama)
+- git branch -D <nombre_de_rama> (eliminar esa rama)
+- git merge <nombre_de_rama> (fusionar esa rama con la master, es necesario estar posicionado en la master)
+- git push origin2 master (actualizar el proyecto en GitHub)

@@ -8,12 +8,20 @@
 </head>
 <body style="background-color: rgb(240, 193, 132);" >
     <h2 align="center" style="color: rgb(87, 70, 49); font-style: italic;">¡Bienvenido/a!</h2>
-    <form align="center" style="background-color: rgb(247, 224, 194); border-bottom-right-radius: 50%; border-top-left-radius: 50%;" method="POST">
+    <form align="center" style="background-color: rgb(247, 224, 194); border-bottom-right-radius: 50%; border-top-left-radius: 50%;" action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
 
         <button type="submit">Register</button>
     </form>
-    <footer style="color: rgba(110, 76, 31, 0.543); padding: 10%;" align="center">AppDonar - 2022</footer>
+
+    <div align="center" style="color: rgb(87, 70, 49); padding: 5%;">
+        <h3>El registro dará error si:</h3>
+        <p>El usuario ya existe.</p>
+        <p>Tu contraseña es muy similar a tu otra información.</p>
+        <p>Tu contraseña contiene menos de 8 caracteres.</p>
+        <p>Tu contraseña sólo contiene números.</p>
+    </div>
+    <footer style="color: rgba(110, 76, 31, 0.543); padding: 5%;" align="center">AppDonar - 2022</footer>
 </body>
 </html>

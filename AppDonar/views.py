@@ -265,20 +265,26 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, 'login.html', {"form":form})
 
-def registro(request):
-    form = UserRegisterForm()
-    if request.method == 'POST':
-        if form.is_valid():
+# def registro(request):
+    # form = UserRegisterForm()
+    # if request.method == 'POST':
+        # if form.is_valid():
+# 
+            # form.save()
+            # return redirect("/login/")
 
+def registro(request):
+    if request.method == 'POST':
+        #  form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            # username = form.cleaned_data["username"]
             form.save()
             return redirect("/login/")
+    # form = UserCreationForm()
+    form = UserRegisterForm()
+    return render(request, "registro.html", {"form":form})
 
-    else:
-
-        # form = UserRegisterForm()
-        return render(request, "registro.html", {"form":form})
-
-    # return render(request, "registro.html", {"form":form})
 
 @login_required
 def editarPerfil(request):
